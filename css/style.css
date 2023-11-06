@@ -261,7 +261,6 @@ header {
 
 .effect__wrapper-cart {
     display: flex;
-    gap: 32px;
 }
 
 .effect__cart {
