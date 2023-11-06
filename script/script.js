@@ -25,21 +25,41 @@ window.onload = updateCountdown;
 // Получаем элемент с классом "popup"
 const popup = document.querySelector('.popup');
 
-// Добавляем обработчик события на увод курсора с окна браузера
-window.addEventListener('mouseout', function(event) {
-// Проверяем, уводит ли курсор за пределы окна браузера
-if (event.relatedTarget === null) {
+// Получаем элемент с классом "popup"
+const popup = document.querySelector('.popup');
+
+// Функция для добавления класса "popup-see" к элементу с классом "popup"
+function addPopupSee() {
+  // Проверяем, если разрешение экрана больше или равно 1170px
+  if (window.innerWidth >= 1170) {
     // Добавляем класс "popup-see" к элементу с классом "popup"
     popup.classList.add('popup-see');
+  }
 }
+
+// Функция для удаления класса "popup-see" у элемента с классом "popup"
+function removePopupSee() {
+  // Проверяем, если разрешение экрана больше или равно 1170px
+  if (window.innerWidth >= 1170) {
+    // Удаляем класс "popup-see" у элемента с классом "popup"
+    popup.classList.remove('popup-see');
+  }
+}
+
+// Добавляем обработчик события на увод курсора с окна браузера
+window.addEventListener('mouseout', function(event) {
+  // Проверяем, уводит ли курсор за пределы окна браузера
+  if (event.relatedTarget === null) {
+    // Вызываем функцию для добавления класса "popup-see" к элементу с классом "popup"
+    addPopupSee();
+  }
 });
 
 // Добавляем обработчик события на возвращение курсора в окно браузера
 window.addEventListener('mouseenter', function(event) {
-// Удаляем класс "popup-see" у элемента с классом "popup"
-popup.classList.remove('popup-see');
+  // Вызываем функцию для удаления класса "popup-see" у элемента с классом "popup"
+  removePopupSee();
 });
-
 
 
 // Получаем элементы с классами "block-img" и "popup"
@@ -63,23 +83,26 @@ const notificationClasses = ['notification1', 'notification2', 'notification3'];
 
 // Функция для добавления класса notification
 function addNotificationClass() {
-  // Генерируем случайный номер уведомления
-  const randomIndex = Math.floor(Math.random() * notificationClasses.length);
-  
-  // Получаем элемент с случайным классом уведомления
-  const notification = document.querySelector("." + notificationClasses[randomIndex]);
-  
-  // Добавляем класс notification
-  notification.classList.add('notification');
-  
-  // Устанавливаем таймер на удаление класса notification через 10 секунд
-  setTimeout(() => {
-    // Удаляем класс notification
-    notification.classList.remove('notification');
-  }, 10000);
-  
-  // Увеличиваем текущий номер уведомления
-  currentNotification = currentNotification === notificationClasses.length ? 1 : currentNotification + 1;
+  // Проверяем, если разрешение экрана больше или равно 1170px
+  if (window.innerWidth >= 1170) {
+    // Генерируем случайный номер уведомления
+    const randomIndex = Math.floor(Math.random() * notificationClasses.length);
+    
+    // Получаем элемент с случайным классом уведомления
+    const notification = document.querySelector("." + notificationClasses[randomIndex]);
+    
+    // Добавляем класс notification
+    notification.classList.add('notification');
+    
+    // Устанавливаем таймер на удаление класса notification через 10 секунд
+    setTimeout(() => {
+      // Удаляем класс notification
+      notification.classList.remove('notification');
+    }, 10000);
+    
+    // Увеличиваем текущий номер уведомления
+    currentNotification = currentNotification === notificationClasses.length ? 1 : currentNotification + 1;
+  }
 }
 
 // Функция для перезапуска цикла
