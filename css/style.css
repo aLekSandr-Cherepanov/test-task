@@ -430,7 +430,7 @@ header {
 
 .backr-img-footer {
     position: absolute;
-    margin-left: -160px;
+    margin-left: -200px;
     bottom: 0;
     z-index: -1;
 }
