@@ -83,26 +83,23 @@ const notificationClasses = ['notification1', 'notification2', 'notification3'];
 
 // Функция для добавления класса notification
 function addNotificationClass() {
-  // Проверяем, если разрешение экрана больше или равно 1170px
-  if (window.innerWidth >= 1170) {
-    // Генерируем случайный номер уведомления
-    const randomIndex = Math.floor(Math.random() * notificationClasses.length);
-    
-    // Получаем элемент с случайным классом уведомления
-    const notification = document.querySelector("." + notificationClasses[randomIndex]);
-    
-    // Добавляем класс notification
-    notification.classList.add('notification');
-    
-    // Устанавливаем таймер на удаление класса notification через 10 секунд
-    setTimeout(() => {
-      // Удаляем класс notification
-      notification.classList.remove('notification');
-    }, 10000);
-    
-    // Увеличиваем текущий номер уведомления
-    currentNotification = currentNotification === notificationClasses.length ? 1 : currentNotification + 1;
-  }
+  // Генерируем случайный номер уведомления
+  const randomIndex = Math.floor(Math.random() * notificationClasses.length);
+  
+  // Получаем элемент с случайным классом уведомления
+  const notification = document.querySelector("." + notificationClasses[randomIndex]);
+  
+  // Добавляем класс notification
+  notification.classList.add('notification');
+  
+  // Устанавливаем таймер на удаление класса notification через 10 секунд
+  setTimeout(() => {
+    // Удаляем класс notification
+    notification.classList.remove('notification');
+  }, 10000);
+  
+  // Увеличиваем текущий номер уведомления
+  currentNotification = currentNotification === notificationClasses.length ? 1 : currentNotification + 1;
 }
 
 // Функция для перезапуска цикла
