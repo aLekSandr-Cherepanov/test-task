@@ -33,12 +33,22 @@ const popup = document.querySelector('.popup');
 
 // Функция для добавления класса "popup-see" к элементу с классом "popup"
 function addPopupSee() {
+  // Проверяем, если размер экрана меньше 660px, то выходим из функции
+  if (window.innerWidth < 660) {
+    return;
+  }
+
   // Добавляем класс "popup-see" к элементу с классом "popup"
   popup.classList.add('popup-see');
 }
 
 // Функция для удаления класса "popup-see" у элемента с классом "popup"
 function removePopupSee() {
+  // Проверяем, если размер экрана меньше 660px, то выходим из функции
+  if (window.innerWidth < 660) {
+    return;
+  }
+
   // Удаляем класс "popup-see" у элемента с классом "popup"
   popup.classList.remove('popup-see');
 }
