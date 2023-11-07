@@ -80,6 +80,8 @@ element.addEventListener('click', function() {
 });
 
 
+
+
 // Переменная для хранения текущего класса с номером уведомления
 let currentNotification = 1;
 
@@ -88,32 +90,42 @@ const notificationClasses = ['notification1', 'notification2', 'notification3'];
 
 // Функция для добавления класса notification
 function addNotificationClass() {
-// Генерируем случайный номер уведомления
-const randomIndex = Math.floor(Math.random() * notificationClasses.length);
+  // Проверяем, если разрешение экрана меньше 660px, то выходим из функции
+  if (window.innerWidth < 660) {
+    return;
+  }
 
-// Получаем элемент с случайным классом уведомления
-const notification = document.querySelector("." + notificationClasses[randomIndex]);
+  // Генерируем случайный номер уведомления
+  const randomIndex = Math.floor(Math.random() * notificationClasses.length);
 
-// Добавляем класс notification
-notification.classList.add('notification');
+  // Получаем элемент с случайным классом уведомления
+  const notification = document.querySelector("." + notificationClasses[randomIndex]);
 
-// Устанавливаем таймер на удаление класса notification через 10 секунд
-setTimeout(() => {
-  // Удаляем класс notification
-  notification.classList.remove('notification');
-}, 10000);
+  // Добавляем класс notification
+  notification.classList.add('notification');
 
-// Увеличиваем текущий номер уведомления
-currentNotification = currentNotification === notificationClasses.length ? 1 : currentNotification + 1;
+  // Устанавливаем таймер на удаление класса notification через 10 секунд
+  setTimeout(() => {
+    // Удаляем класс notification
+    notification.classList.remove('notification');
+  }, 10000);
+
+  // Увеличиваем текущий номер уведомления
+  currentNotification = currentNotification === notificationClasses.length ? 1 : currentNotification + 1;
 }
 
 // Функция для перезапуска цикла
 function restartCycle() {
-// Останавливаем текущий цикл
-clearInterval(intervalId);
+  // Проверяем, если разрешение экрана меньше 660px, то выходим из функции
+  if (window.innerWidth < 660) {
+    return;
+  }
 
-// Переустанавливаем цикл с нуля
-intervalId = setInterval(addNotificationClass, 10000);
+  // Останавливаем текущий цикл
+  clearInterval(intervalId);
+
+  // Переустанавливаем цикл с нуля
+  intervalId = setInterval(addNotificationClass, 10000);
 }
 
 // Устанавливаем интервал для добавления класса notification каждые 10 секунд
@@ -121,7 +133,7 @@ let intervalId = setInterval(addNotificationClass, 10000);
 
 // Добавляем обработчик события для перезапуска цикла
 setTimeout(() => {
-restartCycle();
+  restartCycle();
 }, 20000);
 
 
