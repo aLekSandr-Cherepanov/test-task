@@ -1,3 +1,4 @@
+//Счетчик
 // Функция, которая обновляет счетчик каждую секунду
 function updateCountdown() {
   var currentDate = new Date(); // Получаем текущую дату и время
@@ -21,12 +22,12 @@ function updateCountdown() {
 
 // Вызываем функцию обновления счетчика в момент загрузки страницы
 window.onload = updateCountdown;
+//---------------------------------------------------------------------
 
 
 
 
-
-
+//popup появление после увода курсора за пределы окна
 // Получаем элемент с классом "popup"
 const popup = document.querySelector('.popup');
 
@@ -62,11 +63,11 @@ window.addEventListener('mouseenter', function(event) {
   // Удаляем обработчик события
   window.removeEventListener('mouseenter', arguments.callee);
 });
+//--------------------------------------------------------------------
 
 
 
-
-
+//закрытие элемента при нажатии на крестик
 // Получаем элементы с классами "block-img" и "popup"
 const blockImg = document.querySelectorAll('.block-img');
 const popupe = document.querySelector('.popup');
@@ -78,10 +79,10 @@ element.addEventListener('click', function() {
   popup.classList.remove('popup-see');
 });
 });
+//--------------------------------------------------------------------
 
 
-
-
+//рандомное отображение уведомлений
 // Переменная для хранения текущего класса с номером уведомления
 let currentNotification = 1;
 
@@ -135,12 +136,12 @@ let intervalId = setInterval(addNotificationClass, 10000);
 setTimeout(() => {
   restartCycle();
 }, 20000);
+//----------------------------------------------------------------------
 
 
 
 
-
-
+//удаление уведомлений
 // Получаем все элементы с классом "notification-cross"
 const crosses = document.querySelectorAll(".notification-cross");
 
@@ -155,3 +156,4 @@ cross.addEventListener("click", () => {
   });
 });
 });
+//----------------------------------------------------------------------
